@@ -1,36 +1,39 @@
-import React, { useEffect } from 'react';
-import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
+import React from 'react';
+import { Route, Switch, BrowserRouter as Router, Link } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+import Button from '@material-ui/core/Button';
 import './App.css';
 import QuestionPage from './components/questionCard';
+import CreateProfile from './components/createProfile';
 
 function mainLayout(props) {
-  console.log(props);
-
   return (
     <div className="App">
       <header className="App-header">
+        <h3> Friend Rate /  </h3>
         <QuestionPage username={props.match.params.username} />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Profilini olustur. Arkadaşların oylasın
       </p>
-        <a
-          className="App-link"
-          href=""
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-      </a>
+        <Link to="/signUp" >
+          <Button /* onClick={() => props.history.push('/signUp')} */ variant="outlined" color="primary">
+            Profil Oluştur
+        </Button>
+        </Link>
       </header>
-    </div>
+    </div >
   )
 }
 
+
 function App() {
+  const history = createBrowserHistory();
+
   return (
-    <Router>
+    <Router history={history}>
       <Switch>
         <Route path="/:username" component={mainLayout} />
+        <Route exact path="/signUp" component={CreateProfile} />
       </Switch>
     </Router>
   );

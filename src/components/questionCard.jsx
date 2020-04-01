@@ -4,12 +4,15 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
-import FormHelperText from "@material-ui/core/FormHelperText";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import IconButton from "@material-ui/core/IconButton";
 import FormLabel from "@material-ui/core/FormLabel";
 import Button from "@material-ui/core/Button";
 import { answers, properties } from "../properties";
 import userService from "../services/userService";
 import Progress from "./progress";
+import ResultBar from "./resultBar";
+import ImageAvatar from "./avatar";
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -29,6 +32,7 @@ export default function QuestionPage(props) {
   const [questions, setQuestionValue] = React.useState([...properties]);
   const [counter, setCounter] = React.useState(0);
   const [isVoteEnded, setVodeEnded] = React.useState(false);
+  const [isClickedEnd, setEndClick] = React.useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,8 +46,14 @@ export default function QuestionPage(props) {
     questions[counter].score = event.target.value;
     setQuestionValue(questions);
     setValue(event.target.value);
-    setHelperText(" ");
-    setError(false);
+    if (!questions[counter + 1]) {
+      setVodeEnded(true);
+      return;
+    }
+    setTimeout(() => {
+      setCounter(counter + 1);
+      setValue(null);
+    }, 100);
   };
 
   const handleSubmit = event => {
@@ -59,6 +69,12 @@ export default function QuestionPage(props) {
   const handlePrev = () => {
     setCounter(counter - 1);
     setValue(questions[counter - 1].score);
+    setEndClick(false);
+    setVodeEnded(false);
+  };
+
+  const handleEndVote = () => {
+    setEndClick(true);
   };
 
   return user.succes ? (
@@ -68,62 +84,77 @@ export default function QuestionPage(props) {
         error={error}
         className={classes.formControl}
       >
-        <FormLabel component="legend">{questions[counter].title}</FormLabel>
-        <RadioGroup
-          aria-label="position"
-          name="position"
-          value={parseInt(value)}
-          onChange={handleRadioChange}
-        >
-          {answers.map(item => {
-            return (
-              <FormControlLabel
-                value={item.id}
-                control={<Radio color="primary" />}
-                label={item.value}
-              />
-            );
-          })}
-        </RadioGroup>
-        {isVoteEnded &&
+        {isClickedEnd ? (
           questions.map(item => {
             return (
-              <FormHelperText>
-                soru : {item.title} <br /> cevap : <p> {item.score} </p>
-              </FormHelperText>
+              <ResultBar
+                text={item.title}
+                color={"#" + (((1 << 24) * Math.random()) | 0).toString(16)}
+                value={item.score * 20}
+              />
             );
-          })}
-        {isVoteEnded ? (
+          })
+        ) : (
+          <div>
+            <ImageAvatar
+              alt={user.result.username}
+              src={user.result.profileImagePath}
+              className={classes.large}
+            />
+            {!isVoteEnded && (
+              <div>
+                {" "}
+                <FormLabel component="legend">
+                  {user.result.username + " " + questions[counter].title}
+                </FormLabel>
+                <RadioGroup
+                  aria-label="position"
+                  name="position"
+                  value={parseInt(value)}
+                  onChange={handleRadioChange}
+                >
+                  {answers.map(item => {
+                    return (
+                      <FormControlLabel
+                        style={{
+                          backgroundColor: value == item.id ? "brown" : "",
+                          boxShadow:
+                            "0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)"
+                        }}
+                        value={item.id}
+                        control={<Radio color="primary" />}
+                        label={`${item.value} (${item.label})`}
+                      />
+                    );
+                  })}
+                </RadioGroup>
+              </div>
+            )}
+          </div>
+        )}
+
+        {isVoteEnded && !isClickedEnd && (
           <Button
             variant="contained"
             color="secondary"
+            disable={isClickedEnd}
+            onClick={handleEndVote}
             className={classes.button}
           >
             Oylamayi bitir
           </Button>
-        ) : (
-          <div>
-            {counter > 0 && (
-              <Button
-                onClick={handlePrev}
-                variant="outlined"
-                color="danger"
-                className={classes.button}
-              >
-                Geri
-              </Button>
-            )}
-            <Button
-              disabled={!value}
-              type="submit"
-              variant="outlined"
-              color="primary"
-              className={classes.button}
-            >
-              İleri
-            </Button>
-          </div>
         )}
+        <div>
+          {counter > 0 && !isClickedEnd && (
+            <IconButton
+              onClick={handlePrev}
+              color="secondary"
+              className={classes.margin}
+            >
+              <ArrowBackIcon fontSize="large" />
+            </IconButton>
+          )}
+        </div>
       </FormControl>
     </form>
   ) : (

@@ -3,7 +3,7 @@ import axios from 'axios';
 const qs = require('qs');
 
 const http = axios.create({
-    baseURL: "https://localhost:44315/",
+    baseURL: "https://friendrate.radinyazilim.com/",
     timeout: 30000,
     paramsSerializer: function (params) {
         return qs.stringify(params, {

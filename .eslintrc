@@ -1,0 +1,11 @@
+{
+  "extends": ["react-app", "airbnb", "prettier"],
+  "rules": {
+    "react-hooks/rules-of-hooks": "off"
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "legacyDecorators": true
+    }
+  }
+}

@@ -63,25 +63,53 @@ export const properties = [{
 }
 ]
 
-export const answers = [
+export const properties2 = [
     {
         id: 1,
-        value: 1
+        question: "Survivor 2020 de kim olurdu ?",
+        answers: ["Cemal can", "Baris", "Sercan", "Nisa"]
     },
     {
         id: 2,
-        value: 2
+        question: "Behzat Ç.`de hangi karakter olurdu ?",
+        answers: ["Behzat Ç.", "Harun", "Hayalet", "biri daha"]
     },
     {
         id: 3,
-        value: 3
+        question: "Girisimci olsaydi kim olurdu ?",
+        answers: ["Elon Musk", "Mark Zuckerberg", "Acun Ilicali", "Steve jobs"]
     },
     {
         id: 4,
-        value: 4
+        question: "i müzik türüyle ifade etmek istesen ne olurdu ?",
+        answers: ["Pop", "Rap", "Rock", "Türkü"]
+    },
+]
+
+export const answers = [
+    {
+        id: 1,
+        value: 1,
+        label: "Çok kötü"
+    },
+    {
+        id: 2,
+        value: 2,
+        label: "Kötü"
+    },
+    {
+        id: 3,
+        value: 3,
+        label: "Orta"
+    },
+    {
+        id: 4,
+        value: 4,
+        label: "Başarılı"
     },
     {
         id: 5,
-        value: 5
+        value: 5,
+        label: "Abi süüppperr"
     },
 ]
