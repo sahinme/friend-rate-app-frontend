@@ -4,7 +4,7 @@ import { createBrowserHistory } from 'history';
 import Button from '@material-ui/core/Button';
 import './App.css';
 import QuestionPage from './components/questionCard';
-import CreateProfile from './components/createProfile';
+import SignUp from 'components/signUp';
 
 function mainLayout(props) {
   return (
@@ -25,15 +25,14 @@ function mainLayout(props) {
   )
 }
 
-
 function App() {
   const history = createBrowserHistory();
 
   return (
     <Router history={history}>
       <Switch>
+        <Route exact path="/signUp" component={SignUp} />
         <Route path="/:username" component={mainLayout} />
-        <Route exact path="/signUp" component={CreateProfile} />
       </Switch>
     </Router>
   );

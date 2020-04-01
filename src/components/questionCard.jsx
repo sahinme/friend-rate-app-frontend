@@ -8,11 +8,12 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import IconButton from "@material-ui/core/IconButton";
 import FormLabel from "@material-ui/core/FormLabel";
 import Button from "@material-ui/core/Button";
-import { answers, properties } from "../properties";
+import { answers, properties, properties2 } from "../properties";
 import userService from "../services/userService";
 import Progress from "./progress";
 import ResultBar from "./resultBar";
 import ImageAvatar from "./avatar";
+import SelectResult from "./selectResult";
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -29,7 +30,7 @@ export default function QuestionPage(props) {
   const [value, setValue] = React.useState("");
   const [error, setError] = React.useState(false);
   const [helperText, setHelperText] = React.useState("Choose wisely");
-  const [questions, setQuestionValue] = React.useState([...properties]);
+  const [questions, setQuestionValue] = React.useState([...properties2]);
   const [counter, setCounter] = React.useState(0);
   const [isVoteEnded, setVodeEnded] = React.useState(false);
   const [isClickedEnd, setEndClick] = React.useState(false);
@@ -86,13 +87,7 @@ export default function QuestionPage(props) {
       >
         {isClickedEnd ? (
           questions.map(item => {
-            return (
-              <ResultBar
-                text={item.title}
-                color={"#" + (((1 << 24) * Math.random()) | 0).toString(16)}
-                value={item.score * 20}
-              />
-            );
+            return <SelectResult item1={item.question} item2={item.score} />;
           })
         ) : (
           <div>
@@ -105,7 +100,7 @@ export default function QuestionPage(props) {
               <div>
                 {" "}
                 <FormLabel component="legend">
-                  {user.result.username + " " + questions[counter].title}
+                  {user.result.username + " " + questions[counter].question}
                 </FormLabel>
                 <RadioGroup
                   aria-label="position"
@@ -113,17 +108,17 @@ export default function QuestionPage(props) {
                   value={parseInt(value)}
                   onChange={handleRadioChange}
                 >
-                  {answers.map(item => {
+                  {properties2[counter].answers.map(item => {
                     return (
                       <FormControlLabel
                         style={{
-                          backgroundColor: value == item.id ? "brown" : "",
+                          backgroundColor: value == item ? "brown" : "",
                           boxShadow:
                             "0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)"
                         }}
-                        value={item.id}
+                        value={item}
                         control={<Radio color="primary" />}
-                        label={`${item.value} (${item.label})`}
+                        label={`${item}`}
                       />
                     );
                   })}

@@ -84,6 +84,16 @@ export const properties2 = [
         question: "i müzik türüyle ifade etmek istesen ne olurdu ?",
         answers: ["Pop", "Rap", "Rock", "Türkü"]
     },
+    {
+        id: 5,
+        question: "bir ünlüye benzetsen kime benzetirdin ?",
+        answers: ["Kıvanç Tatlıtuğ", "Mehmet Akif Alakurt", "Cem Yılmaz", "Haluk Levent"]
+    },
+    {
+        id: 6,
+        question: "futbolcu olsaydı kim olurdu ?",
+        answers: ["Roberto Carlos", "C.Ronaldo", "Sabri Sarioglu", "Atiba Hutchinson"]
+    },
 ]
 
 export const answers = [
