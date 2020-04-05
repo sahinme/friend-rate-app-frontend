@@ -151,6 +151,10 @@ body {
   color: rgba(252, 7, 7, 0.54) !important;
 }
 
+.MuiChip-label {
+  font-weight: 600;
+}
+
 /* .MuiFormLabel-root {
   color: rgb(255, 255, 255) !important;
   font-size: 1.5rem !important;

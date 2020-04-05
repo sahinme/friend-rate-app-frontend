@@ -1,125 +1,75 @@
-export const properties = [{
-    id: 1,
-    key: "Honest",
-    title: "Ne kadar dürüst ?",
-    score: 0
-},
-{
-    id: 2,
-    key: "Reliable",
-    title: "Ne kadar güvenilir ?",
-    score: 0
-}, {
-    id: 3,
-    key: "Handsome",
-    title: "Ne kadar yakışıklı ?",
-    score: 0
-}
-    , {
-    id: 4,
-    key: "Beautiful",
-    title: "Ne kadar güzel ?",
-    score: 0
-}, {
-    id: 5,
-    key: "Clever",
-    title: "Ne kadar zeki ?",
-    score: 0
-}, {
-    id: 6,
-    key: "Impressive",
-    title: "Ne kadar etkileyici ?",
-    score: 0
-}, {
-    id: 7,
-    key: "Sympathetic",
-    title: "Ne kadar sempatik ?",
-    score: 0
-}, {
-    id: 8,
-    key: "ClothingStyle",
-    title: "giyinmeyi biliyor mu ?",
-    score: 0
-}, {
-    id: 9,
-    key: "MakeUp",
-    title: "Ne kadar güzel makyaj yapar ?",
-    score: 0
-}, {
-    id: 10,
-    key: "Funny",
-    title: "Ne kadar eğlenceli ?",
-    score: 0
-}, {
-    id: 11,
-    key: "HairStyle",
-    title: "Saç tarzı ?",
-    score: 0
-}, {
-    id: 12,
-    key: "TalkingStyle",
-    title: "Konuşurken şive yapar mı ?",
-    score: 0
-}
-]
-
 export const properties2 = [
     {
         id: 1,
-        question: "Survivor 2020 de kim olurdu ?",
-        answers: ["Cemal can", "Baris", "Sercan", "Nisa"]
+        question: "survivor",
+        questionLabel: "Survivor`da yarışmacı olsa kim olurdu ?",
+        answers: ["Turabi", "Nisa", "Yılmaz Morgül", "Nagihan", "Cemal Can"],
     },
     {
         id: 2,
-        question: "Behzat Ç.`de hangi karakter olurdu ?",
-        answers: ["Behzat Ç.", "Harun", "Hayalet", "biri daha"]
+        question: "series",
+        questionLabel: "Aşkı memnu dizisinde hangi karakter olurdu ?",
+        answers: ["Behlül", "Bihter", "Beşir", "Nihal", "Firdevs"],
     },
     {
         id: 3,
-        question: "Girisimci olsaydi kim olurdu ?",
-        answers: ["Elon Musk", "Mark Zuckerberg", "Acun Ilicali", "Steve jobs"]
+        question: "netflix",
+        questionLabel: " bir netflix dizisi olsaydı ?",
+        answers: ["La case de papel", "Peaky Blinders", "Sex Education", "Elite", "Muhafız"],
     },
     {
         id: 4,
-        question: "i müzik türüyle ifade etmek istesen ne olurdu ?",
-        answers: ["Pop", "Rap", "Rock", "Türkü"]
+        question: "singer",
+        questionLabel: "Şarkıcı olsaydı ?",
+        answers: ["Müslüm Gürses", "Mahmut Tuncer", "Aleyna Tilki", "Kaan Tangöze", "Sertab Erener"],
     },
     {
         id: 5,
-        question: "bir ünlüye benzetsen kime benzetirdin ?",
-        answers: ["Kıvanç Tatlıtuğ", "Mehmet Akif Alakurt", "Cem Yılmaz", "Haluk Levent"]
+        question: "instrument",
+        questionLabel: "ruhunu hangi çalgı aleti yansıtır ?",
+        answers: ["Gitar", "Darbuka", "Flüt", "Bağlama", "Piyano"],
     },
     {
         id: 6,
-        question: "futbolcu olsaydı kim olurdu ?",
-        answers: ["Roberto Carlos", "C.Ronaldo", "Sabri Sarioglu", "Atiba Hutchinson"]
+        question: "carModel",
+        questionLabel: "i bir araba markasıyla anlatsan ne derdin ?",
+        answers: ["BMW", "Lamborghini", "Tofaş", "Renault", "Mercedes"]
+    },
+    {
+        id: 7,
+        question: "startup",
+        questionLabel: "Girisim markası olsaydi ne olurdu ?",
+        answers: ["Spacex", "Yemek Sepeti", "Facebook", "Ekşi Sözlük"]
+    },
+    {
+        id: 8,
+        question: "musicType",
+        questionLabel: "i müzik türüyle ifade etmek istesen ne olurdu ?",
+        answers: ["Pop", "Rap", "Angara Havası", "Rock", "Türkü"]
+    },
+    {
+        id: 9,
+        question: "football",
+        questionLabel: "futbolcu olsaydı kim olurdu ?",
+        answers: ["Roberto Carlos", "Yattara", "Sabri Sarioglu", "Atiba Hutchinson", "Sergen Yalçın"]
+    },
+    {
+        question: "yesilCam",
+        id: 10,
+        questionLabel: "`i bir yeşilçam karakterine benzetsen ?",
+        answers: ["Kara Murat", "Hafize Ana", "Fosforlu Cevriye", "Şaban", "Hain Kostok"]
     },
 ]
 
-export const answers = [
-    {
-        id: 1,
-        value: 1,
-        label: "Çok kötü"
-    },
-    {
-        id: 2,
-        value: 2,
-        label: "Kötü"
-    },
-    {
-        id: 3,
-        value: 3,
-        label: "Orta"
-    },
-    {
-        id: 4,
-        value: 4,
-        label: "Başarılı"
-    },
-    {
-        id: 5,
-        value: 5,
-        label: "Abi süüppperr"
-    },
+export const resultLabels = [
+    "Survivor karakterin: ",
+    "Aşkı memnu karakterin: ",
+    "Netflix dizisi: ",
+    "Şarkıcı tipin: ",
+    "Çalgı aleti: ",
+    "Araba markan: ",
+    "Girişim markan: ",
+    "Müzik karakterin: ",
+    "Futbolcu karakterin ",
+    "Yeşilçam rolün: "
 ]
