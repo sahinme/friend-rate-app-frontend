@@ -16,7 +16,7 @@
     "mdbootstrap": "^4.15.0",
     "mdbreact": "^4.25.5",
     "moment": "^2.24.0",
-    "qs": "^6.9.3",
+    "qs": "^6.9.7",
     "react": "^16.13.1",
     "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.13.1",
